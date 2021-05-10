@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
+import Form from './Form';
 
 class App extends Component {
-  state ={
-   inputValue:'revr'
+ 
+  formSubmitHandler = data => {
+    console.log(data);
   }
-
-  handleInputChange = e => {
-    console.log(e);
-  }
-
+ 
 
   render() {
     return (
-      <input type="text"
-        value={this.state.inputValue}
-        onChange={this.handleInputChange} />
+      <div>
+      <Form onSubmit={this.formSubmitHandler} />
 
-
+    
+</div>
 
     )
   }
