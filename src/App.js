@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ContactForm from './components/ContactForm';
 import Container from './components/Container'
+import ContactList from './components/ContactList';
 
 
 class App extends Component {
@@ -38,6 +39,14 @@ class App extends Component {
       return contact.name.toLocaleLowerCase() === name.toLocaleLowerCase();
     });
   };
+  
+  findContact = () => {
+    const { filter, contacts } = this.state;
+    
+  }
+
+
+
 
 
   render() {
@@ -48,7 +57,8 @@ class App extends Component {
 <div>
   <h2>Contacts</h2>
   {/* <Filter ... /> */}
-  {/* <ContactList ... /> */}
+  <ContactList findContact={this.findContact}
+            onDeleteContact={this.deleteContact}/>
 </div>
 </Container> 
     )
