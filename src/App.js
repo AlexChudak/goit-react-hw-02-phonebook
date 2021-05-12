@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ContactForm from './components/ContactForm';
 import Container from './components/Container'
 import ContactList from './components/ContactList';
+import Filter from './components/Filter';
 
 
 class App extends Component {
@@ -42,9 +43,19 @@ class App extends Component {
   
   findContact = () => {
     const { filter, contacts } = this.state;
-    
-  }
+    const lowerFilter = filter.toLocaleLowerCase();
 
+    if (filter.length) {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(lowerFilter));
+    } else { return contacts; }
+  };
+
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts:prevState.contacts.filter(contact=>contact.id!==contactId),
+    }))
+  }
 
 
 
@@ -56,7 +67,7 @@ class App extends Component {
   <ContactForm onSubmit={this.addContact} />
 <div>
   <h2>Contacts</h2>
-  {/* <Filter ... /> */}
+  <Filter value={this.state.filter} onChange={this.handleChange}  />
   <ContactList findContact={this.findContact}
             onDeleteContact={this.deleteContact}/>
 </div>

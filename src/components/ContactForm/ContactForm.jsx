@@ -41,8 +41,8 @@ class ContactForm extends Component {
     render() {
         const { name, number } = this.state;
         return (
-            <form>
-                <label>
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor={this.nameInputId}>
                     Name
                     <input
                     type="text"
@@ -54,7 +54,7 @@ class ContactForm extends Component {
                         onChange={this.handleChange}
                         id={this.nameInputId}/>
                 </label>
-                <label>
+                <label htmlFor={this.numberInputId}>
                     <input
                     type="tel"
                      name="number"
