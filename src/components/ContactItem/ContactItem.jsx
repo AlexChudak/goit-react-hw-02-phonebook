@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 const ContactItem = ({ id, name, number, onDeleteContact }) => {
     return (
+        
         <li styleName={style.contactItem} >
-            {name}:{number}
+            {name}:   {number}
             <button
                 className={style.buttonDel}
                 type="submit"
@@ -12,7 +13,8 @@ const ContactItem = ({ id, name, number, onDeleteContact }) => {
             >
                 Delete
             </button>
-        </li>
+            </li>
+           
     );
 };
 
