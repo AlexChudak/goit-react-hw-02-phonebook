@@ -57,7 +57,28 @@ class App extends Component {
     }))
   }
 
+ // localStorage перезаписываем state
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts')
+    const parsedContacts = JSON.parse(contacts)
+    
+// Do check
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts })
+    }
+    
+  }
+ 
+// add LocalStorage
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      
+      localStorage.setItem('contacts',JSON.stringify(this.state.contacts))
+    }
+
+    
+  }
 
 
   render() {
